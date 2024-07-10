@@ -289,6 +289,88 @@
 
 
   
+    <article id="post-机器人串口通信配置" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2024/06/13/%E6%9C%BA%E5%99%A8%E4%BA%BA%E4%B8%B2%E5%8F%A3%E9%80%9A%E4%BF%A1%E9%85%8D%E7%BD%AE/">Hexo常用指令</a>
+    </h1>
+  
+
+        
+        <a href="/2024/06/13/%E6%9C%BA%E5%99%A8%E4%BA%BA%E4%B8%B2%E5%8F%A3%E9%80%9A%E4%BF%A1%E9%85%8D%E7%BD%AE/" class="archive-article-date">
+  	<time datetime="2024-06-13T15:33:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-06-13</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="机器人协议（Protobuf，Modbus-RTU）串口通信配置"><a href="#机器人协议（Protobuf，Modbus-RTU）串口通信配置" class="headerlink" title="机器人协议（Protobuf，Modbus-RTU）串口通信配置"></a>机器人协议（Protobuf，Modbus-RTU）串口通信配置</h1><h2 id="串口配置"><a href="#串口配置" class="headerlink" title="串口配置"></a>串口配置</h2><p>确保有权限访问<strong>‘&#x2F;dev&#x2F;ttyUSB0’</strong>设备文件。可尝试更改设备文件的权限：</p>
+<p><code>sudo chmod 666 /dev/ttyUSB0</code></p>
+<p>可以使用<strong>‘lsof’</strong>命令查看哪个进程在使用设备：</p>
+<p><code>sudo lsof /dev/ttyUSB0</code></p>
+<p>查看外设：</p>
+<p><code>lsusb</code></p>
+<p>设置串口参数</p>
+<p><code>sudo stty -F /dev/ttyUSB0 115200 cs8 -cstopb -parenb</code></p>
+<p>检查设备状态</p>
+<p><code>sudo dmesg | grep tty</code></p>
+<p>列出串口设备</p>
+<p><code>ls /dev/ttyUSB*</code></p>
+<p>查看当前配置</p>
+<p><code>stty -F /dev/ttyUSB0</code></p>
+<h2 id="使用lshw"><a href="#使用lshw" class="headerlink" title="使用lshw"></a>使用lshw</h2><p>运行</p>
+<p><code>sudo lshw -short | grep tty</code></p>
+<h2 id="使用‘cat’和‘echo’进行测试"><a href="#使用‘cat’和‘echo’进行测试" class="headerlink" title="使用‘cat’和‘echo’进行测试"></a>使用‘cat’和‘echo’进行测试</h2><p>读取设备数据</p>
+<p><code>cat /dev/tty</code></p>
+<p>发送数据</p>
+<p><code>echo &quot;test data&quot; &gt; /dev/ttyUSB0</code></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2024/06/13/%E6%9C%BA%E5%99%A8%E4%BA%BA%E4%B8%B2%E5%8F%A3%E9%80%9A%E4%BF%A1%E9%85%8D%E7%BD%AE/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-最大似然估计" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
