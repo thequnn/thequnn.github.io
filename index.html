@@ -266,6 +266,40 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="PID闭环控制算法"><a href="#PID闭环控制算法" class="headerlink" title="PID闭环控制算法"></a>PID闭环控制算法</h2><h3 id="PID简介"><a href="#PID简介" class="headerlink" title="PID简介"></a>PID简介</h3><p><img src="/2024/07/08/PID%E9%97%AD%E7%8E%AF%E6%8E%A7%E5%88%B6%E7%AE%97%E6%B3%95/PID_control.png" alt="PID控制" title="PID"></p>
+<h3 id="位置型PID和增量型PID的比较"><a href="#位置型PID和增量型PID的比较" class="headerlink" title="位置型PID和增量型PID的比较"></a>位置型PID和增量型PID的比较</h3><h4 id="位置式PID控制器"><a href="#位置式PID控制器" class="headerlink" title="位置式PID控制器"></a>位置式PID控制器</h4><p>位置式PID控制器是一种常见的反馈控制器，通过计算控制变量的绝对位置来调节系统输出。其基本公式为：<br>$$<br>u(t) &#x3D; K_p \cdot e(t) + K_i \cdot \int_{0}^{t} e(\tau) , d\tau + K_d \cdot \frac{de(t)}{dt}<br>$$</p>
+<ul>
+<li><strong>( u(t) )</strong>：控制输出</li>
+<li><strong>( e(t) )</strong>：当前误差（设定值与实际值之差）</li>
+<li><strong>( K_p )</strong>：比例增益</li>
+<li><strong>( K_i )</strong>：积分增益</li>
+<li><strong>( K_d )</strong>：微分增益</li>
+</ul>
+<p>位置式PID的特点在于每次计算的输出是绝对位置，即控制量的总和。</p>
+<h4 id="增量式PID控制器"><a href="#增量式PID控制器" class="headerlink" title="增量式PID控制器"></a>增量式PID控制器</h4><p>增量式PID控制器则是通过计算控制变量的增量来调节系统输出，其基本公式为：</p>
+<p>$$<br>\Delta u(t) &#x3D; K_p \cdot \left[ e(t) - e(t-1) \right] + K_i \cdot e(t) + K_d \cdot \left[ e(t) - 2e(t-1) + e(t-2) \right]<br>$$</p>
+<ul>
+<li><strong>( \Delta u(t) )</strong>：控制输出的增量</li>
+<li><strong>( e(t) )</strong>：当前误差</li>
+<li><strong>( e(t-1) )</strong>：前一次误差</li>
+<li><strong>( e(t-2) )</strong>：前前次误差</li>
+<li><strong>( K_p )</strong>：比例增益</li>
+<li><strong>( K_i )</strong>：积分增益</li>
+<li><strong>( K_d )</strong>：微分增益</li>
+</ul>
+<p>增量式PID的特点在于每次计算的输出是相对位置，即相对于上一次的变化量。</p>
+<h4 id="对比"><a href="#对比" class="headerlink" title="对比"></a>对比</h4><ul>
+<li><strong>计算方式</strong>：位置式PID直接计算控制变量的总值，而增量式PID计算的是控制变量的变化量。</li>
+<li><strong>抗干扰能力</strong>：增量式PID对外部干扰和参数变化更为敏感，但也因此能够更快速地响应系统变化。</li>
+<li><strong>应用场景</strong>：位置式PID适用于对绝对值控制要求高的系统，而增量式PID更适用于对相对变化量敏感的系统。</li>
+</ul>
+<p>两种PID控制器各有优缺点，选择哪种方式需要根据具体应用场景和控制要求来决定:</p>
+<ul>
+<li>位置式需要引入初始阀位值，增量式不需要</li>
+<li>位置式需要防<strong>积分饱和</strong>，增量式不会产生积分饱和</li>
+<li>只有存在偏差时，增量式才会有输出</li>
+<li>增量式容易实现从手动到自动的切换</li>
+<li>位置式PID控制的输出与整个过去的状态有关，用到了无误差得到累加值；而增量式PID的输出只与当前拍和前两拍的误差有关，因此位置式PID的累积误差相对更大</li>
+</ul>
 
       
 
